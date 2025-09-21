@@ -111,6 +111,8 @@ def test_sigmoid(a: float) -> None:
     assert abs(1 - sigmoid(a) - sigmoid(-a)) < 1e-6
     assert sigmoid(0) == 0.5
     assert sigmoid(a - 1e-4) <= sigmoid(a + 1e-4)
+
+
 @pytest.mark.task0_2
 @given(small_floats, small_floats, small_floats)
 def test_transitive(a: float, b: float, c: float) -> None:
@@ -121,6 +123,7 @@ def test_transitive(a: float, b: float, c: float) -> None:
     if t1 & t2:
         assert t3 == 1
 
+
 @pytest.mark.task0_2
 @given(small_floats, small_floats)
 def test_symmetric(a: float, b: float) -> None:
@@ -129,19 +132,22 @@ def test_symmetric(a: float, b: float) -> None:
     """
     assert abs(mul(a, b) - mul(b, a)) < 1e-6
 
+
 @pytest.mark.task0_2
 @given(small_floats, small_floats, small_floats)
 def test_distribute(z: float, x: float, y: float) -> None:
     r"""Write a test that ensures that your operators distribute, i.e.
     :math:`z \times (x + y) = z \times x + z \times y`
     """
-    assert abs(mul(z, add(x, y)) -add(mul(z, x), mul(z, y))) < 1e-6
+    assert abs(mul(z, add(x, y)) - add(mul(z, x), mul(z, y))) < 1e-6
+
 
 @pytest.mark.task0_2
 @given(small_floats)
 def test_other(a: float) -> None:
     """Write a test that ensures some other property holds for your functions."""
     assert abs(add(a, neg(a))) < 1e-6
+
 
 # ## Task 0.3  - Higher-order functions
 
@@ -170,6 +176,7 @@ def test_sum_distribute(ls1: List[float], ls2: List[float]) -> None:
     ls = addLists(ls1, ls2)
     for i in range(len(ls)):
         assert ls1[i] + ls2[i] == ls[i]
+
 
 @pytest.mark.task0_3
 @given(lists(small_floats))
